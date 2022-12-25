@@ -38,7 +38,7 @@ export class PasswordInput extends Component {
                     <div className={`show-password ${this.state.show ? "active" : ""}`}>
                         <img
                             src={showPasswordImage}
-                            alt="show Password Image"
+                            alt="show Password"
                             onClick={this.toggleShow}
                         />
                     </div>

@@ -54,6 +54,5 @@ class Login extends Component {
         );
     }
 }
-{/* <button onClick={() => this.props.move('signup')}>to Signup</button> */ }
 
 export default Login;

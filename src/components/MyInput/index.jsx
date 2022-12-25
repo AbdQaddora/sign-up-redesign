@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Body3 } from '../Typography';
 
 export default ({ className = "", type = "text", value, onChange, name, label, placeholder, required }) => {
