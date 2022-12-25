@@ -6,7 +6,7 @@ import Login from '../pages/Login';
 class Router extends Component {
 
     state = {
-        currentPage: Signup,
+        currentPage: Login,
     }
 
     move = (name) => {
