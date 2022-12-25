@@ -1,7 +1,7 @@
 import React from 'react'
 import { Body3 } from '../Typography';
 
-export default ({ className = "", type = "text", value, onChange, name, label, placeholder, required }) => {
+const MyInput = ({ className = "", type = "text", value, onChange, name, label, placeholder, required }) => {
     return (
         <div className={`my-input ${className}`}>
             <label className='my-input-label' htmlFor={name}>
@@ -21,3 +21,5 @@ export default ({ className = "", type = "text", value, onChange, name, label, p
         </div>
     )
 }
+
+export default MyInput
