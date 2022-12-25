@@ -1,0 +1,27 @@
+.password-input {
+    position: relative;
+}
+
+.password-input .show-password {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.password-input .show-password.active::after {
+    content: "";
+    height: 35px;
+    width: 2px;
+    background-color: #8692A6;
+
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    z-index: 999;
+    transform: translateY(calc(-50% - 2px)) rotateZ(30deg);
+
+    pointer-events: none;
+}

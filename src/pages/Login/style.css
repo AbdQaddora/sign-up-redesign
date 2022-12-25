@@ -1,0 +1,27 @@
+/* left */
+.login .left {
+    min-height: 100vh;
+}
+
+.login .left .logo {
+    display: flex;
+    gap: 10px;
+    user-select: none;
+    margin-bottom: 70px;
+}
+
+.login .left .content {
+    margin-bottom: 50px;
+}
+
+.joystick{
+    width: 50%;
+    align-self: flex-end;
+    transform: translateY(-20%);
+}
+
+/* right */
+
+.login .right{
+    padding-top: 150px;
+}

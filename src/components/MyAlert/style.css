@@ -1,0 +1,15 @@
+.alert {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    padding: 15px 25px;
+    color: #FFFFFF;
+    background-color: var(--danger-red);
+    border-radius: 7px;
+    z-index: 999;
+    opacity: 0.9;
+}
+
+.alert.success {
+    background-color: var(--success-green);
+}

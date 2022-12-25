@@ -1,0 +1,41 @@
+/* left */
+.signup .left {
+    min-height: 100vh;
+    background: #1565D8;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+    background: #1565D8DD;
+    padding: 70px;
+    height: 100%;
+}
+
+.signup .left .content {
+    margin-bottom: 50px;
+}
+
+.corner{
+    align-self: flex-end;
+}
+
+/* right */
+
+.signup .right {
+    padding-top: 150px;
+}
+
+.back-btn{
+    position: relative;
+    top: -20px;
+    left: -40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    background-color: transparent;
+    text-transform: capitalize;
+    font-size: 16px;
+}

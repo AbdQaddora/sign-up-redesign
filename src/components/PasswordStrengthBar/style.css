@@ -1,0 +1,48 @@
+.password-strength__bar {
+    width: 100%;
+    height: 5px;
+    background-color: #C4C4C4;
+    border-radius: 4px;
+}
+
+.password-strength__bar-value {
+    height: 5px;
+    width: 60%;
+    border-radius: 4px;
+    background-color: #FFC107;
+    transition: 0.3s all ease-in-out;
+}
+
+.password-strength__bar-value.weak {
+    background-color: red;
+    width: 25%;
+}
+
+.password-strength__bar-value.strong {
+    background-color: green;
+    width: 80%;
+}
+
+.password-strength__bar-value.very-strong {
+    background-color: rgb(0, 2, 143);
+    width: 100%;
+}
+
+.password-strength__text {
+    margin-top: 5px;
+    color: #FFC107;
+    text-transform: capitalize;
+    transition: 0.3s all ease-in-out;
+}
+
+.password-strength__text.weak {
+    color: red;
+}
+
+.password-strength__text.strong {
+    color: green;
+}
+
+.password-strength__text.very-strong {
+    color: rgb(0, 2, 143);
+}

@@ -1,0 +1,11 @@
+.quote {
+    font-family: Gayathri;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--cyan);
+    height: 22px;
+}
+
+.quote-secondary {
+    color: var(--gray-3);
+}

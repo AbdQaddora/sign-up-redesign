@@ -1,0 +1,27 @@
+.or-line {
+    text-align: center;
+    position: relative;
+    color: #BABABA;
+    font-size: 12px;
+    font-weight: 400;
+    width: 100%;
+    user-select: none;
+    margin-bottom: 30px;
+}
+
+.or-line::before,
+.or-line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: calc(50% - 15px);
+    height: 1px;
+    background-color: #F5F5F5;
+}
+
+.or-line::after{
+    left: unset;
+    right: 0;
+}

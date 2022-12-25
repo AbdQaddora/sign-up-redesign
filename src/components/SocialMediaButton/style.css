@@ -1,0 +1,37 @@
+.social-media-btn {
+    cursor: pointer;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    transition: 0.3s all ease-in-out;
+}
+
+.social-media-btn img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
+
+.social-media-btn:hover {
+    background: #FAFAFA;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-media-btn:active {
+    animation-name: SocialFocusAnimation;
+    animation-duration: 0.3s;
+}
+
+@keyframes SocialFocusAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
