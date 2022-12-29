@@ -6,11 +6,9 @@ import SubmitButton from '../../../components/SubmitButton'
 import { Body1 } from '../../../components/Typography'
 import PasswordStrengthBar from '../../../components/PasswordStrengthBar'
 
-import { checkPasswordStrength } from '../../../utils';
-
 import './style.css'
 import MyAlert from '../../../components/MyAlert'
-import { schema } from './validate'
+import { schema } from '../../../validation/signupValidation'
 export default class SignupForm extends Component {
     state = {
         email: "",

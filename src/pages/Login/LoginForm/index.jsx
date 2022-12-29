@@ -3,7 +3,7 @@ import MyInput from '../../../components/MyInput'
 import MyAlert from '../../../components/MyAlert'
 import { PasswordInput } from '../../../components/PasswordInput'
 import SubmitButton from '../../../components/SubmitButton'
-import { schema } from './validate'
+import { schema } from '../../../validation/loginValidation'
 
 export default class LoginForm extends Component {
     state = {
