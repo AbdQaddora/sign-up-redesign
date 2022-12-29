@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import MyInput from '../../../components/MyInput'
-import MyAlert from '../../../components/MyAlert'
 import { PasswordInput } from '../../../components/PasswordInput'
 import SubmitButton from '../../../components/SubmitButton'
 import { schema } from '../../../validation/loginValidation'
 import Alerts from '../../../components/Alerts'
-import { boolean } from 'yup'
 
 export default class LoginForm extends Component {
     state = {
@@ -13,23 +11,6 @@ export default class LoginForm extends Component {
         password: "",
         errors: [],
         success: false
-    }
-
-    componentDidUpdate() {
-        this.timeoutId = setTimeout(() => {
-            if (this.state.errors !== []) {
-                this.setState({ errors: [] });
-            }
-
-            if (this.state.success) {
-                this.setState({ success: false });
-            }
-        }, 5000);
-    }
-
-    componentWillUnmount() {
-        console.log(this.timeoutId);
-        clearTimeout(this.timeoutId);
     }
 
     emptyErrors = () => {

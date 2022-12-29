@@ -7,8 +7,8 @@ import { Body1 } from '../../../components/Typography'
 import PasswordStrengthBar from '../../../components/PasswordStrengthBar'
 
 import './style.css'
-import MyAlert from '../../../components/MyAlert'
 import { schema } from '../../../validation/signupValidation'
+import Alerts from '../../../components/Alerts'
 export default class SignupForm extends Component {
     state = {
         email: "",
@@ -17,20 +17,6 @@ export default class SignupForm extends Component {
         selected: false,
         errors: [],
         success: false
-    }
-
-    componentDidUpdate() {
-        if (this.state.errors !== []) {
-            setTimeout(() => {
-                this.setState({ errors: [] });
-            }, 5000)
-        }
-
-        if (this.state.success) {
-            setTimeout(() => {
-                this.setState({ success: false });
-            }, 5000)
-        }
     }
 
     validateData = () => {
@@ -44,6 +30,15 @@ export default class SignupForm extends Component {
         }).catch((err) => {
             this.setState({ errors: err.errors });
         });
+    }
+
+
+    emptyErrors = () => {
+        this.setState({ errors: [] });
+    }
+
+    removeSuccessFlag = () => {
+        this.setState({ success: false });
     }
 
     onChange = (e) => {
@@ -100,10 +95,16 @@ export default class SignupForm extends Component {
                 </div>
                 <SubmitButton>Register Account</SubmitButton>
 
-                {this.state.success && <MyAlert success> sign up done successfully</MyAlert>}
-                {this.state.errors.map((error, index) => {
-                    return <MyAlert key={index} index={index}>{error}</MyAlert>
-                })}
+                {
+                    (this.state.success || this.state.errors.length > 0) &&
+                    <Alerts
+                        errors={this.state.errors}
+                        emptyErrors={this.emptyErrors}
+                        success={this.state.success}
+                        removeSuccessFlag={this.removeSuccessFlag}
+                        successMsg="sign up done successfully 👏"
+                    />
+                }
             </form>)
     }
 }
