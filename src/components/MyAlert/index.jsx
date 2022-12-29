@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
-
 import './style.css';
-
-export default class MyAlert extends Component {
-    componentDidMount() {
-        setTimeout(() => {
-            this.props.close();
-        }, this.props.time)
-    }
-
-    render() {
-        return (
-            <div className={`alert ${this.props.success ? "success" : ""}`}>
-                {this.props.children}
-            </div>
-        );
-    }
+const MyAlert = ({ success, index, children }) => {
+    return (
+        <div
+            className={`alert ${success ? "success" : ""}`}
+            style={{ top: index ? (index + 1) * 55 : 55 }}
+        >
+            {console.log(index ? (index + 1) * 70 : 25)}
+            {children}
+        </div>)
 }
+
+export default MyAlert

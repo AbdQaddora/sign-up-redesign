@@ -10,13 +10,42 @@ import { checkPasswordStrength } from '../../../utils';
 
 import './style.css'
 import MyAlert from '../../../components/MyAlert'
+import { schema } from './validate'
 export default class SignupForm extends Component {
     state = {
         email: "",
         password: "",
         password2: "",
         selected: false,
-        error: null
+        errors: [],
+        success: false
+    }
+
+    componentDidUpdate() {
+        if (this.state.errors !== []) {
+            setTimeout(() => {
+                this.setState({ errors: [] });
+            }, 5000)
+        }
+
+        if (this.state.success) {
+            setTimeout(() => {
+                this.setState({ success: false });
+            }, 5000)
+        }
+    }
+
+    validateData = () => {
+        schema.validate({
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2,
+            selected: this.state.selected,
+        }, { abortEarly: false }).then(() => {
+            this.setState({ success: true })
+        }).catch((err) => {
+            this.setState({ errors: err.errors });
+        });
     }
 
     onChange = (e) => {
@@ -27,52 +56,14 @@ export default class SignupForm extends Component {
         this.setState(prev => ({ selected: !prev.selected }))
     }
 
-    validateData = () => {
-        const strongness = checkPasswordStrength(this.state.password);
-        if (strongness === 'weak' || strongness === 'medium') {
-            this.setState({ error: "weak password make it stronger" })
-        } else if (this.state.password !== this.state.password2) {
-            this.setState({ error: "unidentical passwords" })
-        }
-    }
-
-    success = () => {
-        console.log(this.state);
-        this.setState({ error: "SUCCESS" })
-    }
-
     onSubmit = (e) => {
         e.preventDefault();
         this.validateData();
-
-        if (this.state.error) {
-            console.log("SUCCESS");
-            this.success();
-        }
     }
-
 
     render() {
         return (
             <form onSubmit={this.onSubmit}>
-                {this.state.error &&
-                    <MyAlert
-                        close={() => { this.setState({ error: null }) }}
-                        time={3000}
-                    >
-                        {this.state.error}
-                    </MyAlert>
-                }
-
-                {this.state.error === "SUCCESS" &&
-                    <MyAlert
-                        close={() => { this.setState({ error: null }) }}
-                        time={3000}
-                        success
-                    >
-                        sign up done successfully
-                    </MyAlert>
-                }
                 <MyInput
                     name="email"
                     label="Email address*"
@@ -110,6 +101,11 @@ export default class SignupForm extends Component {
                     <Body1 className="text-gray-2">I agree to terms & conditions</Body1>
                 </div>
                 <SubmitButton>Register Account</SubmitButton>
+
+                {this.state.success && <MyAlert success> sign up done successfully</MyAlert>}
+                {this.state.errors.map((error, index) => {
+                    return <MyAlert key={index} index={index}>{error}</MyAlert>
+                })}
             </form>)
     }
 }

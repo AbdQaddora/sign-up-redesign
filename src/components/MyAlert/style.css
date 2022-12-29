@@ -1,15 +1,23 @@
 .alert {
     position: fixed;
-    right: 25px;
-    bottom: 25px;
+    left: 25px;
+    /* from js file top: 25px; */
     padding: 15px 25px;
     color: #FFFFFF;
     background-color: var(--danger-red);
     border-radius: 7px;
     z-index: 999;
     opacity: 0.9;
+    width: 40vw;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
 }
 
 .alert.success {
     background-color: var(--success-green);
+}
+
+.alert:hover {
+    opacity: 1;
+    transform: scale(1.05);
 }
