@@ -1,3 +1,9 @@
 .grid-column {
     padding: 70px;
 }
+
+@media screen and (max-width:1000px) {
+    .grid-column {
+        padding: 10px;
+    }
+}
