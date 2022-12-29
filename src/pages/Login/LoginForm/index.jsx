@@ -4,6 +4,8 @@ import MyAlert from '../../../components/MyAlert'
 import { PasswordInput } from '../../../components/PasswordInput'
 import SubmitButton from '../../../components/SubmitButton'
 import { schema } from '../../../validation/loginValidation'
+import Alerts from '../../../components/Alerts'
+import { boolean } from 'yup'
 
 export default class LoginForm extends Component {
     state = {
@@ -14,17 +16,28 @@ export default class LoginForm extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.errors !== []) {
-            setTimeout(() => {
+        this.timeoutId = setTimeout(() => {
+            if (this.state.errors !== []) {
                 this.setState({ errors: [] });
-            }, 5000)
-        }
+            }
 
-        if (this.state.success) {
-            setTimeout(() => {
+            if (this.state.success) {
                 this.setState({ success: false });
-            }, 5000)
-        }
+            }
+        }, 5000);
+    }
+
+    componentWillUnmount() {
+        console.log(this.timeoutId);
+        clearTimeout(this.timeoutId);
+    }
+
+    emptyErrors = () => {
+        this.setState({ errors: [] });
+    }
+
+    removeSuccessFlag = () => {
+        this.setState({ success: false });
     }
 
     validateData = () => {
@@ -67,10 +80,17 @@ export default class LoginForm extends Component {
                     required
                 />
                 <SubmitButton>login</SubmitButton>
-                {this.state.success && <MyAlert success>success log in 👏</MyAlert>}
-                {this.state.errors.map((error, index) => {
-                    return <MyAlert key={index} index={index}>{error}</MyAlert>
-                })}
+                {
+                    (this.state.success || this.state.errors.length > 0) &&
+                    <Alerts
+                        errors={this.state.errors}
+                        emptyErrors={this.emptyErrors}
+                        success={this.state.success}
+                        removeSuccessFlag={this.removeSuccessFlag}
+                        successMsg="success log in 👏"
+                    />
+                }
+
             </form>)
     }
 }

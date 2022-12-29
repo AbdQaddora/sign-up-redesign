@@ -5,7 +5,6 @@ const MyAlert = ({ success, index, children }) => {
             className={`alert ${success ? "success" : ""}`}
             style={{ top: index ? (index + 1) * 55 : 55 }}
         >
-            {console.log(index ? (index + 1) * 70 : 25)}
             {children}
         </div>)
 }
