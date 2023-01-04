@@ -1,0 +1,30 @@
+.cup {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.cup img {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    z-index: 3;
+}
+
+.cup::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 10px solid #32FB00;
+    box-shadow: 
+        0px 0px 5px #32FB00,
+        0px 0px 15px #32FB00,
+        0px 0px 15px 5px #32FB00 inset;
+    z-index: 2;
+}

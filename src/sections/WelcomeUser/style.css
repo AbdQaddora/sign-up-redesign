@@ -1,0 +1,18 @@
+.welcome-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px;
+    gap: 10px;
+}
+
+.welcome-user>p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
+    text-align: right;
+
+    color: var(--main-color);
+}

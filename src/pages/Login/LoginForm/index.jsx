@@ -26,7 +26,8 @@ export default class LoginForm extends Component {
             email: this.state.email,
             password: this.state.password
         }, { abortEarly: false }).then(() => {
-            this.setState({ success: true })
+            this.setState({ success: true });
+            this.props.toHomePage();
         }).catch((err) => {
             this.setState({ errors: err.errors });
         });

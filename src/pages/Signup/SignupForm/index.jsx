@@ -26,12 +26,12 @@ export default class SignupForm extends Component {
             password2: this.state.password2,
             selected: this.state.selected,
         }, { abortEarly: false }).then(() => {
-            this.setState({ success: true })
+            this.setState({ success: true });
+            this.props.toHomePage();
         }).catch((err) => {
             this.setState({ errors: err.errors });
         });
     }
-
 
     emptyErrors = () => {
         this.setState({ errors: [] });

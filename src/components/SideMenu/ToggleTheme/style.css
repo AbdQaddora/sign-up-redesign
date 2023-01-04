@@ -1,0 +1,39 @@
+.toggle-theme {
+    outline: none;
+    border: none;
+    background: #C1C1C1;
+    border-radius: 60px;
+    width: 50px;
+    padding: 15px 0;
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.toggle-theme.light::after,
+.toggle-theme.dark::after {
+    content: "";
+    width: 44px;
+    height: 44px;
+    background-color: #222;
+    position: absolute;
+    top: 14px;
+    left: 3px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0px 0px 15px 2px #222;
+}
+
+.toggle-theme.dark::after {
+    top: unset;
+    bottom: 14px;
+}
+
+.toggle-theme img {
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 999;
+}

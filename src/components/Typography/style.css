@@ -12,10 +12,26 @@ h2 {
     line-height: 51px;
 }
 
+.section-title {
+    font-family: 'Righteous', cursive;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 43px;
+    color: var(--main-color);
+    margin: 50px 0px 20px;
+}
+
 h3 {
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
+}
+
+h4 {
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 31px;
 }
 
 .body1 {

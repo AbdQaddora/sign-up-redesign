@@ -1,0 +1,11 @@
+.new-games{
+    margin: 25px 0px;
+}
+
+.new-games .section-title {
+    margin-bottom: 20px;
+}
+
+.new-games .swiper {
+    cursor: pointer;
+}

@@ -1,0 +1,34 @@
+.side-menu,
+.side-menu>div {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+}
+
+.side-menu {
+    padding: 15px 0;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+}
+
+.side-menu::after {
+    content: "";
+    height: 90vh;
+    width: 9px;
+    position: absolute;
+    left: 70px;
+    top: 5vh;
+    background: #FFFFFF;
+    box-shadow: inset 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 38px;
+}
+
+.side-menu img {
+    width: 100%
+}

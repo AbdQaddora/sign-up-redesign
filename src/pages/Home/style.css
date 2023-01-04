@@ -1,0 +1,17 @@
+.home {
+    padding-inline-start: 100px;
+    --bg-color: #fff;
+    --main-color: #000;
+}
+
+.home.dark {
+    --bg-color: #070707;
+    --main-color: #fff;
+    background-color: var(--bg-color);
+}
+
+.home .bottom {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    gap: 25px;
+}

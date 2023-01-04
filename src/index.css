@@ -94,4 +94,5 @@
 .link {
     color: #1565D8;
     cursor: pointer;
+    text-decoration: none;
 }
