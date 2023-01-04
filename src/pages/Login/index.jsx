@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GridContainer from '../../components/GridContainer';
 import GridColumn from '../../components/GridContainer/GridColumn';
 import Quote from '../../components/Quote';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Quote from '../../components/Quote';
 import { Body2, Body3, H3 } from '../../components/Typography';
 

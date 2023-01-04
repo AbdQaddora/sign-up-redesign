@@ -6,7 +6,7 @@ import avatar from '../../assets/images/avatar.jpg'
 import './style.css'
 const Avatar = () => {
     return (
-        <img className='avatar' src={avatar} />
+        <img className='avatar' src={avatar} alt="user avatar"/>
     )
 }
 
