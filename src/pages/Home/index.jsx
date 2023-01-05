@@ -8,9 +8,10 @@ import './style.css'
 import LastPlayed from '../../sections/LastPlayed'
 import MostRecent from '../../sections/MostRecent'
 import Frinds from '../../sections/Frinds'
+import { Navigate } from 'react-router-dom'
 export default class Home extends Component {
     state = {
-        theme: "dark"
+        theme: "light"
     }
 
     toggleTheme = () => {
@@ -18,8 +19,13 @@ export default class Home extends Component {
     }
 
     render() {
+        if (!this.props.isAuth) {
+            return <Navigate to="/login" />
+        }
+
         return (
             <div className={`home ${this.state.theme}`}>
+
                 <SideMenu
                     toggleTheme={this.toggleTheme}
                     theme={this.state.theme}

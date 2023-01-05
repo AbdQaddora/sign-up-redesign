@@ -13,6 +13,12 @@ export default class LoginForm extends Component {
         success: false
     }
 
+    componentDidMount() {
+        if (this.props.isAuth) {
+            this.props.toHomePage();
+        }
+    }
+
     emptyErrors = () => {
         this.setState({ errors: [] });
     }
@@ -27,6 +33,7 @@ export default class LoginForm extends Component {
             password: this.state.password
         }, { abortEarly: false }).then(() => {
             this.setState({ success: true });
+            this.props.login()
             this.props.toHomePage();
         }).catch((err) => {
             this.setState({ errors: err.errors });

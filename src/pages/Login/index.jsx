@@ -14,12 +14,12 @@ import OrLine from '../../components/OrLine';
 import LoginForm from './LoginForm';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ isAuth, login }) => {
     const navigate = useNavigate();
     const toHomePage = () => {
         navigate("/")
     }
-    
+
     return (
         <GridContainer className='login'>
 
@@ -47,7 +47,7 @@ const Login = () => {
                 </div>
                 <SocialMediaButtons />
                 <OrLine />
-                <LoginForm toHomePage={toHomePage} />
+                <LoginForm toHomePage={toHomePage} isAuth={isAuth} login={login} />
                 <Body2 className='text-center text-gray-1'>
                     Don’t have an account?
                     <Link className='link' to="/signup"> Register</Link>

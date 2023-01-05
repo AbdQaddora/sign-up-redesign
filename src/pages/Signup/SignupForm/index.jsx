@@ -19,6 +19,12 @@ export default class SignupForm extends Component {
         success: false
     }
 
+    componentDidMount() {
+        if (this.props.isAuth) {
+            this.props.toHomePage();
+        }
+    }
+
     validateData = () => {
         schema.validate({
             email: this.state.email,
@@ -27,6 +33,7 @@ export default class SignupForm extends Component {
             selected: this.state.selected,
         }, { abortEarly: false }).then(() => {
             this.setState({ success: true });
+            this.props.login();
             this.props.toHomePage();
         }).catch((err) => {
             this.setState({ errors: err.errors });
