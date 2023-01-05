@@ -23,7 +23,7 @@ export default class App extends Component {
           <Route path='/login' element={<Login login={this.login} isAuth={this.state.isAuth} />} />
           <Route path='/signup' element={<Signup login={this.login} isAuth={this.state.isAuth} />} />
           <Route path='/' element={<Home isAuth={this.state.isAuth} />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path='not-found' element={<NotFound />} />
         </Routes>
       </div>)
   }
