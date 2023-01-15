@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import SideMenu from '../../components/SideMenu'
 import WelcomeUser from '../../sections/WelcomeUser'
 import NewGames from '../../sections/NewGames'
+import LastPlayed from '../../sections/LastPlayed';
+import MostRecent from '../../sections/MostRecent';
+import Frinds from '../../sections/Frinds';
 
 // style
-import './style.css'
-import LastPlayed from '../../sections/LastPlayed'
-import MostRecent from '../../sections/MostRecent'
-import Frinds from '../../sections/Frinds'
-import { Navigate } from 'react-router-dom'
+import './style.css';
+
 export default class Home extends Component {
     state = {
         theme: "light"

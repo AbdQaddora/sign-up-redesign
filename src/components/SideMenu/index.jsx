@@ -23,7 +23,7 @@ const SideMenu = ({ toggleTheme, theme }) => {
         <NavLink to="/liked">
           <img src={heart} alt="heart" />
         </NavLink>
-        <NavLink to="/setting">
+        <NavLink to="/users-list">
           <img src={setting} alt="setting" />
         </NavLink>
         <NavLink to="/puzzle">

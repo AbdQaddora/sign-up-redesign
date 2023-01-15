@@ -13,15 +13,19 @@ class Profile extends Component {
         this.setState({ user })
     }
 
+    handelLogout = () => {
+        logout();
+        this.props.navigate("/login")
+    }
+
     render() {
         return (
             <div className='profile'>
                 <h2>name : {this.state.user.name}</h2>
                 <h2>email : {this.state.user.email}</h2>
-                <h2>id : {this.state.user._id}</h2>
                 <button
                     className='logout'
-                    onClick={logout}
+                    onClick={this.handelLogout}
                 >logout</button>
             </div>
         );

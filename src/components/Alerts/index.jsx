@@ -11,10 +11,6 @@ class Alerts extends Component {
             if (this.props.errors.length > 0) {
                 this.props.emptyErrors();
             }
-
-            if (this.props.success) {
-                this.props.removeSuccessFlag();
-            }
         }, 5000);
 
         this.setState({ timeoutId })
@@ -27,7 +23,6 @@ class Alerts extends Component {
     render() {
         return (
             <div>
-                {this.props.success && <MyAlert success>{this.props.successMsg}</MyAlert>}
                 {this.props.errors && this.props.errors.map((error, index) => {
                     return <MyAlert key={index} index={index}>{error}</MyAlert>
                 })}

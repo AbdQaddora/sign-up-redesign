@@ -18,55 +18,70 @@ import arrow_back from '../../assets/images/arrow_back.png';
 // style
 import './style.css'
 import SignupForm from './SignupForm';
+import Loading from '../../components/Loading';
 
 
-const Signup = () => {
-    const navigate = useNavigate();
-    const toHomePage = () => {
-        navigate("/")
+class Signup extends React.Component {
+    state = {
+        isLoading: false
     }
 
-    return (
-        <GridContainer className='signup'>
-            <GridColumn className='left' style={{
-                backgroundImage: `url(${signupBg})`
-            }}>
-                <div className="overlay center">
-                    <div className="logo">
-                        <img src={logo} alt="logo" />
-                        <Body3 className='text-white'>Gamers</Body3>
-                    </div>
-                    <div>
-                        <Quote />
-                        <Body2 className='text-white italic content'>
-                            I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I imagine a lot of things about their lives... about the day ahead of them.
+    setLoading = (isLoading) => {
+        this.setState({ isLoading })
+    }
+
+    render() {
+        if (this.state.isLoading) {
+            return <Loading />
+        }
+
+        return (
+            <GridContainer className='signup' >
+                <GridColumn className='left' style={{
+                    backgroundImage: `url(${signupBg})`
+                }}>
+                    <div className="overlay center">
+                        <div className="logo">
+                            <img src={logo} alt="logo" />
+                            <Body3 className='text-white'>Gamers</Body3>
+                        </div>
+                        <div>
+                            <Quote />
+                            <Body2 className='text-white italic content'>
+                                I always observe the people who pass by when I ride an escalator. I'll never see most of them again, so I imagine a lot of things about their lives... about the day ahead of them.
+                            </Body2>
+                        </div>
+                        <Body2 className='text-white'>
+                            Hideo Kojima
                         </Body2>
+                        <img className="corner" src={corner} alt="corner" />
                     </div>
-                    <Body2 className='text-white'>
-                        Hideo Kojima
-                    </Body2>
-                    <img className="corner" src={corner} alt="corner" />
-                </div>
-            </GridColumn>
-            <GridColumn>
-                <Link className='link' to="/login">
-                    <button className="btn back-btn text-gray-2" onClick={() => this.props.move('login')}>
-                        <img src={arrow_back} alt="arrow back" />
-                        back
-                    </button>
-                </Link>
-                <div>
-                    <H3>Register Individual Account!</H3>
-                    <Body3 className="text-gray-2">
-                        For the purpose of gamers regulation, your details are required.
-                    </Body3>
-                </div>
-                <SignupForm toHomePage={toHomePage} />
-                <OrLine />
-                <GoogleLoginButton />
-            </GridColumn>
-        </GridContainer>
-    )
+                </GridColumn>
+                <GridColumn>
+                    <Link className='link' to="/login">
+                        <button className="btn back-btn text-gray-2">
+                            <img src={arrow_back} alt="arrow back" />
+                            back
+                        </button>
+                    </Link>
+                    <div>
+                        <H3>Register Individual Account!</H3>
+                        <Body3 className="text-gray-2">
+                            For the purpose of gamers regulation, your details are required.
+                        </Body3>
+                    </div>
+
+                    <SignupForm
+                        navigate={this.props.navigate}
+                        setLoading={this.setLoading}
+                    />
+
+                    <OrLine />
+                    <GoogleLoginButton />
+                </GridColumn>
+            </GridContainer >
+        )
+    }
 }
 
 export default Signup;

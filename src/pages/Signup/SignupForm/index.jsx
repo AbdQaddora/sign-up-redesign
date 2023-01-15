@@ -9,32 +9,37 @@ import PasswordStrengthBar from '../../../components/PasswordStrengthBar'
 import './style.css'
 import { schema } from '../../../validation/signupValidation'
 import Alerts from '../../../components/Alerts'
+import { signup } from '../../../services/auth.service'
 export default class SignupForm extends Component {
     state = {
+        name: "",
         email: "",
         password: "",
         password2: "",
         selected: false,
         errors: [],
-        success: false
-    }
-
-    componentDidMount() {
-        if (this.props.isAuth) {
-            this.props.toHomePage();
-        }
     }
 
     validateData = () => {
         schema.validate({
+            name: this.state.name,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
             selected: this.state.selected,
-        }, { abortEarly: false }).then(() => {
-            this.setState({ success: true });
-            this.props.login();
-            this.props.toHomePage();
+        }, { abortEarly: false }).then(async () => {
+            this.props.setLoading(true);
+            const res = await signup(this.state.name, this.state.email, this.state.password);
+            this.props.setLoading(false);
+
+            if (!res.error) {
+                this.props.navigate("/");
+            } else {
+                console.log(res.error)
+                // !WHY?? 😭
+                this.setState({ errors: [res.error] });
+            }
+
         }).catch((err) => {
             this.setState({ errors: err.errors });
         });
@@ -42,10 +47,6 @@ export default class SignupForm extends Component {
 
     emptyErrors = () => {
         this.setState({ errors: [] });
-    }
-
-    removeSuccessFlag = () => {
-        this.setState({ success: false });
     }
 
     onChange = (e) => {
@@ -64,6 +65,16 @@ export default class SignupForm extends Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
+                <MyInput
+                    name="name"
+                    label="User Name*"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Enter User Name"
+                    required
+                />
+
                 <MyInput
                     name="email"
                     label="Email address*"
@@ -102,16 +113,11 @@ export default class SignupForm extends Component {
                 </div>
                 <SubmitButton>Register Account</SubmitButton>
 
-                {
-                    (this.state.success || this.state.errors.length > 0) &&
-                    <Alerts
-                        errors={this.state.errors}
-                        emptyErrors={this.emptyErrors}
-                        success={this.state.success}
-                        removeSuccessFlag={this.removeSuccessFlag}
-                        successMsg="sign up done successfully 👏"
-                    />
-                }
+                <Alerts
+                    errors={this.state.errors}
+                    emptyErrors={this.emptyErrors}
+                />
+
             </form>)
     }
 }

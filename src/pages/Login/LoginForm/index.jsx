@@ -11,32 +11,34 @@ export default class LoginForm extends Component {
         email: "",
         password: "",
         errors: [],
-        success: false
     }
-    
+
     emptyErrors = () => {
         this.setState({ errors: [] });
     }
 
-    removeSuccessFlag = () => {
-        this.setState({ success: false });
-    }
-
     validateData = () => {
+        const setErrors = (errors) => {
+            this.setState({ errors });
+        }
+
         schema.validate({
             email: this.state.email,
             password: this.state.password
         }, { abortEarly: false }).then(async () => {
+            this.props.setLoading(true);
             const res = await login(this.state.email, this.state.password);
-            console.log(res);
             if (!res.error) {
-                this.setState({ success: true });
-                this.props.login();
-                this.props.toHomePage();
+                this.props.navigate("/");
+            } else {
+                console.log(res.error)
+                
+                // !WHY THIS NOT WORK 🤦‍♂️
+                setErrors([res.error])
             }
-
+            this.props.setLoading(false);
         }).catch((err) => {
-            this.setState({ errors: err.errors });
+            setErrors(err.errors);
         });
     }
 
@@ -69,16 +71,11 @@ export default class LoginForm extends Component {
                     required
                 />
                 <SubmitButton>login</SubmitButton>
-                {
-                    (this.state.success || this.state.errors.length > 0) &&
-                    <Alerts
-                        errors={this.state.errors}
-                        emptyErrors={this.emptyErrors}
-                        success={this.state.success}
-                        removeSuccessFlag={this.removeSuccessFlag}
-                        successMsg="success log in 👏"
-                    />
-                }
+
+                <Alerts
+                    errors={this.state.errors}
+                    emptyErrors={this.emptyErrors}
+                />
 
             </form>)
     }

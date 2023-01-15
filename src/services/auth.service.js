@@ -5,6 +5,7 @@ import {
 } from '../session';
 
 export const BASE_URL = "https://react-tt-api.onrender.com";
+
 export const signup = async (name, email, password) => {
     const user = getUserFromSessionStorage()
     if (!user) {
@@ -17,11 +18,16 @@ export const signup = async (name, email, password) => {
                 body: JSON.stringify({ name, email, password })
             })
             const data = await res.json();
-            setUserInSessionStorage(data);
-            return data;
-        } catch (error) {
-            console.log(error);
-            return { error: error.message }
+
+            if (data._id) {
+                setUserInSessionStorage(data);
+                return data;
+            } else {
+                return { error: data.message }
+            }
+
+        } catch (err) {
+            return { error: err.message }
         }
     } else {
         console.error("ALREADY LOGGED IN !!");
@@ -41,8 +47,12 @@ export const login = async (email, password) => {
                 body: JSON.stringify({ email, password })
             })
             const data = await res.json();
-            setUserInSessionStorage(data);
-            return data;
+            if (data._id) {
+                setUserInSessionStorage(data);
+                return data;
+            } else {
+                return { error: data.message }
+            }
         } catch (error) {
             console.log(error);
             return { error: error.message }
