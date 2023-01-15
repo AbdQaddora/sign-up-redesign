@@ -19,13 +19,8 @@ export default class Home extends Component {
     }
 
     render() {
-        if (!this.props.isAuth) {
-            return <Navigate to="/login" />
-        }
-
         return (
             <div className={`home ${this.state.theme}`}>
-
                 <SideMenu
                     toggleTheme={this.toggleTheme}
                     theme={this.state.theme}

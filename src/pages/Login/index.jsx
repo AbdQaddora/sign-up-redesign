@@ -12,10 +12,16 @@ import './style.css';
 import SocialMediaButtons from './SocialMediaButtons';
 import OrLine from '../../components/OrLine';
 import LoginForm from './LoginForm';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { getUserFromSessionStorage } from '../../session';
 
-const Login = ({ isAuth, login }) => {
+const Login = () => {
     const navigate = useNavigate();
+    const user = getUserFromSessionStorage();
+
+    if(user){
+        return <Navigate to="/"/>
+    }
     const toHomePage = () => {
         navigate("/")
     }
@@ -47,7 +53,7 @@ const Login = ({ isAuth, login }) => {
                 </div>
                 <SocialMediaButtons />
                 <OrLine />
-                <LoginForm toHomePage={toHomePage} isAuth={isAuth} login={login} />
+                <LoginForm toHomePage={toHomePage} />
                 <Body2 className='text-center text-gray-1'>
                     Don’t have an account?
                     <Link className='link' to="/signup"> Register</Link>

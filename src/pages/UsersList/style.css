@@ -1,0 +1,28 @@
+.back_home{
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 7px 10px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.users{
+    min-height: 100vh;
+    padding: 15px 10%;
+}
+
+.user__card{
+    background-color: #CCC;
+    padding: 15px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+.user__card p{
+    text-decoration: none !important;
+
+}

@@ -1,0 +1,26 @@
+.user_details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.delete_user{
+    font-size: 28px;
+    background-color: #A22;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+
+.user_details .delete_user:hover{
+    background-color: #A00;
+    padding: 7px 30px;
+}

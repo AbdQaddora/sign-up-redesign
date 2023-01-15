@@ -9,7 +9,7 @@ const PasswordStrengthBar = ({ password }) => {
                 <div className={`password-strength__bar-value ${checkPasswordStrength(password)}`}></div>
             </div>
             <p className={`password-strength__text ${checkPasswordStrength(password)}`}>
-                {checkPasswordStrength(password) === 'weak' ? "weak password you need to do it better" :
+                {password !== "" && checkPasswordStrength(password) === 'weak' ? "weak password you need to do it better" :
                     checkPasswordStrength(password) === 'medium' ? "Not bad but you know you can do it better"
                         : checkPasswordStrength(password) === 'strong' ? "nice choice" : "perfect password but make sure to remember it"
                 }

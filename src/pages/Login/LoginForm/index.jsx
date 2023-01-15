@@ -4,6 +4,7 @@ import { PasswordInput } from '../../../components/PasswordInput'
 import SubmitButton from '../../../components/SubmitButton'
 import { schema } from '../../../validation/loginValidation'
 import Alerts from '../../../components/Alerts'
+import { login } from '../../../services/auth.service'
 
 export default class LoginForm extends Component {
     state = {
@@ -12,13 +13,7 @@ export default class LoginForm extends Component {
         errors: [],
         success: false
     }
-
-    componentDidMount() {
-        if (this.props.isAuth) {
-            this.props.toHomePage();
-        }
-    }
-
+    
     emptyErrors = () => {
         this.setState({ errors: [] });
     }
@@ -31,10 +26,15 @@ export default class LoginForm extends Component {
         schema.validate({
             email: this.state.email,
             password: this.state.password
-        }, { abortEarly: false }).then(() => {
-            this.setState({ success: true });
-            this.props.login()
-            this.props.toHomePage();
+        }, { abortEarly: false }).then(async () => {
+            const res = await login(this.state.email, this.state.password);
+            console.log(res);
+            if (!res.error) {
+                this.setState({ success: true });
+                this.props.login();
+                this.props.toHomePage();
+            }
+
         }).catch((err) => {
             this.setState({ errors: err.errors });
         });
