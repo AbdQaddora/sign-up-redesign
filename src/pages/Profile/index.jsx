@@ -26,7 +26,7 @@ class Profile extends Component {
                 <button
                     className='logout'
                     onClick={this.handelLogout}
-                >logout</button>
+                >LOGOUT</button>
             </div>
         );
     }

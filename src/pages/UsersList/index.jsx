@@ -21,13 +21,13 @@ class UsersList extends Component {
         if (this.state.isLoading) {
             return <Loading />
         }
-        
+
         return (
             <div className='users'>
                 <button
                     className='back_home'
                     onClick={() => { this.props.navigate("/") }}
-                >back to home</button>
+                >BACK TO HOME</button>
                 {this.state.users.map(user => {
                     return (
                         <Link to={`/user-details/${user._id}`} key={user._id}>
