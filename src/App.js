@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom';
 // pages
 import Login from './pages/Login';
