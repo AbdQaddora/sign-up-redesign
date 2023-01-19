@@ -1,1 +1,1 @@
-# LIVE SITE LINK *[signup-redesign](https://signup-redesign.netlify.app/)*
+# LIVE SITE LINK *[signup-redesign](https://gamers-with-api.netlify.app)*
